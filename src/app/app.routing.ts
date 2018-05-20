@@ -8,8 +8,10 @@ import { UsersComponent } from './users/users.component';
 const appRoutes: Routes = [
     { path: '', component: FormFieldComponent },
     { path: 'login', component: FormFieldComponent },
-    { path: 'home', component: HomeComponent},
-    { path: 'users', component: UsersComponent },
+    { path: 'home', component: HomeComponent, children:
+    [
+        { path: 'users', component: UsersComponent }
+    ]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: 'login' }
