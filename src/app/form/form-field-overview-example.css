@@ -1,0 +1,14 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 350px;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.auc-header {
+  text-align: center;
+}
