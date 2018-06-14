@@ -51,6 +51,7 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
+import { WalkinFormComponent } from './walkin-form/walkin-form.component';
 
 @NgModule({
   exports: [
@@ -106,12 +107,12 @@ export class DemoMaterialModule {}
     FlexLayoutModule,
     routing
   ],
-  entryComponents: [AppComponent],
   declarations: [
     AppComponent,
     FormFieldComponent,
     HomeComponent,
-    UsersComponent
+    UsersComponent,
+    WalkinFormComponent
   ],
   bootstrap: [AppComponent],
   providers: []

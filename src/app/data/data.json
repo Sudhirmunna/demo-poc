@@ -1,0 +1,78 @@
+{
+  "id": "1",
+  "name": {
+    "first": "Sudhir",
+    "middle": "Kumar",
+    "last": "G"
+  },
+  "ssn": 123456789,
+  "dob": "09/06/1991",
+  "countryOfBirth": "",
+  "placeOfBirth": "",
+  "passportNumber": "",
+  "passportStartDate": "",
+  "passportEndDate": "",
+  "I94Number": "",
+  "email": "sudhir@gmail.com",
+  "phoneNumber": 9876543210,
+  "alternateNumber": 9876543210,
+  "role": "employee",
+  "education": [
+    {
+      "degree": "",
+      "major": "",
+      "school": "",
+      "location": {
+        "city": "",
+        "state": "",
+        "zipcode": ""
+      },
+      "startDate": "",
+      "endDate": "",
+      "GPA": ""
+    }
+  ],
+  "visaStatus": [
+    {
+      "type": "H1B",
+      "startDate": "",
+      "lastDate": "",
+      "isCurrent": true
+    },
+    {
+      "type": "OPT",
+      "startDate": "",
+      "endDate": "",
+      "isCurrent": false
+    }
+  ],
+  "experience": [
+    {
+      "company": "",
+      "designation": "",
+      "location": {
+        "city": "",
+        "state": "",
+        "zipcode": ""
+      },
+      "startDate": "",
+      "endDate": ""
+    }
+  ],
+  "address": {
+    "addressLine1": "",
+    "addressLine2": "",
+    "addressLine3": "",
+    "city": "",
+    "state": "",
+    "zipcode": ""
+  },
+  "permanentAddress": {
+    "addressLine1": "",
+    "addressLine2": "",
+    "addressLine3": "",
+    "city": "",
+    "state": "",
+    "zipcode": ""
+  }
+}
