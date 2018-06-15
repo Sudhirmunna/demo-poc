@@ -1,0 +1,14 @@
+.cc-margin {
+    margin: 20px;
+}
+.cc-link {
+    color: skyblue;
+    cursor: pointer;
+}
+.cc-heading {
+    margin: 10px;
+}
+.cc-close {
+    float: right;
+    line-height: 24px;
+}

@@ -52,6 +52,7 @@ import { routing } from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { UsersComponent } from './users/users.component';
 import { WalkinFormComponent } from './walkin-form/walkin-form.component';
+import { AddressComponent } from './walkin-form/address/address.component';
 
 @NgModule({
   exports: [
@@ -112,7 +113,8 @@ export class DemoMaterialModule {}
     FormFieldComponent,
     HomeComponent,
     UsersComponent,
-    WalkinFormComponent
+    WalkinFormComponent,
+    AddressComponent
   ],
   bootstrap: [AppComponent],
   providers: []

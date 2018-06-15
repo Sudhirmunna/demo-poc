@@ -1,0 +1,17 @@
+<div [formGroup]="addressForm">
+    <div class="form-group col-xs-6">
+        <mat-form-field appearance="legacy">
+            <input type="text" class="form-control" formControlName="street" matInput placeholder="Street">
+        </mat-form-field>
+
+        <small [hidden]="addressForm.controls.street.valid" class="text-danger">
+            Street is required
+        </small>
+    </div>
+    <div class="form-group col-xs-6">
+        <mat-form-field appearance="legacy">
+            <input type="text" class="form-control" formControlName="postcode" matInput placeholder="Zipcode">
+        </mat-form-field>
+
+    </div>
+</div>

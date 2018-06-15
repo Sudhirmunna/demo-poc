@@ -1,139 +1,50 @@
-<!-- start  -->
-
 <div class="container">
-  <h4>Add customer</h4>
-  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
-    <!-- we will place our fields here -->
-
-    <!-- name -->
-    <div class="form-group">
-      <label>Name</label>
-      <input type="text" formControlName="name">
-      <!--display error message if name is not valid-->
-      <small *ngIf="!myForm.controls.name.valid" class="text-danger">
-        Name is required (minimum 5 characters).
-      </small>
-    </div>
-
-
-    <!-- list of addresses -->
-    <div formArrayName="addresses">
-      <div *ngFor="let address of myForm.controls.addresses.controls; let i=index">
-        <!-- address header, show remove button when more than one address available -->
-        <div>
-          <span>Address {{i + 1}}</span>
-          <span *ngIf="myForm.controls.addresses.controls.length > 1" (click)="removeAddress(i)">
-          </span>
-        </div>
-
-        <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
-        <div [formGroupName]="i">
-          <!--street-->
-          <div>
-            <label>street</label>
-            <input type="text" formControlName="street">
-            <!--display error message if street is not valid-->
-            <small [hidden]="myForm.controls.addresses.controls[i].controls.street.valid">
-              Street is required
+    <div class="row">
+      <div class="col-xs-12">
+        <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+          <div class="form-group">
+            <mat-form-field appearance="legacy">
+              <input class="form-control" formControlName="name" matInput placeholder="Name">
+            </mat-form-field>
+            <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+              Name is required (minimum 5 characters).
             </small>
           </div>
-          <!--postcode-->
-          <div>
-            <label>postcode</label>
-            <input type="text" formControlName="postcode">
+          <!--addresses-->
+          <div formArrayName="addresses">
+            <div *ngFor="let address of myForm.controls.addresses.controls; let i=index" class="panel panel-default">
+              <mat-card>
+                <div class="cc-heading">
+                  <span>Address {{i + 1}}</span>
+                  <a class="cc-close" *ngIf="myForm.controls.addresses.controls.length > 1" (click)="removeAddress(i)" mat-button>
+                    <mat-icon>close</mat-icon>
+                  </a>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="panel-body" [formGroupName]="i">
+                  <app-address [group]="myForm.controls.addresses.controls[i]"></app-address>
+                </div>
+              </mat-card>
+            </div>
           </div>
-        </div>
+
+          <div class="cc-margin">
+            <a (click)="addAddress()" class="cc-link">
+              Add another address +
+            </a>
+          </div>
+
+          <div class="margin-20">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!myForm.valid">Submit</button>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="cc-margin">
+            <div>myForm details:-</div>
+            <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+            <pre>form value: <br>{{myForm.value | json}}</pre>
+          </div>
+        </form>
       </div>
     </div>
-
-    <button type="submit" [disabled]="!myForm.valid">Submit</button>
-  </form>
 </div>
-
-<!-- end -->
-
-<!-- <div class="example-container">
-  <mat-card>
-
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="First Name">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Last Name">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Email">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Mobile">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Name of University">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Degree">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Major">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Location">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput [matDatepicker]="startDate" placeholder="Start Date" disabled>
-      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-      <mat-datepicker #startDate disabled="false"></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput [matDatepicker]="endDate" placeholder="End Date" disabled>
-      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-      <mat-datepicker #endDate disabled="false"></mat-datepicker>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Companay">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Location">
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <input matInput placeholder="Designation">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-      <input matInput [matDatepicker]="startDate1" placeholder="Start Date" disabled>
-      <mat-datepicker-toggle matSuffix [for]="startDate1"></mat-datepicker-toggle>
-      <mat-datepicker #startDate1 disabled="false"></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput [matDatepicker]="endDate1" placeholder="End Date" disabled>
-      <mat-datepicker-toggle matSuffix [for]="endDate1"></mat-datepicker-toggle>
-      <mat-datepicker #endDate1 disabled="false"></mat-datepicker>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <textarea matInput placeholder="Description"></textarea>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy">
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-  </mat-card>
-</div> -->
