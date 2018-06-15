@@ -1,4 +1,58 @@
-<div class="example-container">
+<!-- start  -->
+
+<div class="container">
+  <h4>Add customer</h4>
+  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+    <!-- we will place our fields here -->
+
+    <!-- name -->
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" formControlName="name">
+      <!--display error message if name is not valid-->
+      <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+        Name is required (minimum 5 characters).
+      </small>
+    </div>
+
+
+    <!-- list of addresses -->
+    <div formArrayName="addresses">
+      <div *ngFor="let address of myForm.controls.addresses.controls; let i=index">
+        <!-- address header, show remove button when more than one address available -->
+        <div>
+          <span>Address {{i + 1}}</span>
+          <span *ngIf="myForm.controls.addresses.controls.length > 1" (click)="removeAddress(i)">
+          </span>
+        </div>
+
+        <!-- Angular assigns array index as group name by default 0, 1, 2, ... -->
+        <div [formGroupName]="i">
+          <!--street-->
+          <div>
+            <label>street</label>
+            <input type="text" formControlName="street">
+            <!--display error message if street is not valid-->
+            <small [hidden]="myForm.controls.addresses.controls[i].controls.street.valid">
+              Street is required
+            </small>
+          </div>
+          <!--postcode-->
+          <div>
+            <label>postcode</label>
+            <input type="text" formControlName="postcode">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!myForm.valid">Submit</button>
+  </form>
+</div>
+
+<!-- end -->
+
+<!-- <div class="example-container">
   <mat-card>
 
     <mat-form-field appearance="legacy">
@@ -17,7 +71,7 @@
       <input matInput placeholder="Mobile">
     </mat-form-field>
     <br>
-    <!-- <mat-form-field appearance="legacy">
+    <mat-form-field appearance="legacy">
       <input matInput placeholder="Name of University">
     </mat-form-field>
     <br>
@@ -70,7 +124,7 @@
     <mat-form-field appearance="legacy">
       <textarea matInput placeholder="Description"></textarea>
     </mat-form-field>
-    <br> -->
+    <br>
     <mat-form-field appearance="legacy">
       <textarea matInput placeholder="Textarea"></textarea>
     </mat-form-field>
@@ -82,4 +136,4 @@
     </mat-form-field>
 
   </mat-card>
-</div>
+</div> -->
